@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Deponse;
 use Illuminate\Http\Request;
 
-class DeponsesController extends Controller
+class ExponsesController extends Controller
 {
     public function create()
     {
