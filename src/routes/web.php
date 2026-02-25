@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ColocationController;
+use App\Http\Controllers\ExponsesController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,14 +14,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/colocation/create', [ColocationController::class, 'store'])->name('colocation.store');
     Route::get('/colocation', [ColocationController::class, 'index'])->name('colocation.index');
 
-    Route::get('/index', function () {
+    Route::get('/', function () {
         return view('index');
     })->name('index');
 
-    Route::get('/view3', function () {
-        return view('Deponses.addDeponse');
-    });
-    
+
+    Route::get('/exponse/create', [ExponsesController::class, 'create'])->name('exponse.create');
+    Route::post('/exponse/store', [ExponsesController::class, 'store'])->name('exponse.store');
 
     Route::get('/inscription/form', [UserController::class, 'viewInscription'])->name('user.viewInscription');
     Route::post('/inscription', [UserController::class, 'inscription'])->name('user.inscription');

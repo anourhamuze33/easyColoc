@@ -429,7 +429,7 @@
 
     <!-- QUICK ACTIONS -->
     <div class="quick-actions">
-      <div class="qa-card" onclick="document.getElementById('m-dep').style.display='flex'">
+      <div class="qa-card">
         <div class="qa-icon">💸</div>
         <div class="qa-label">Ajouter une dépense</div>
       </div>
@@ -681,35 +681,6 @@
   </div>
 </main>
 
-<!-- MODAL Dépense -->
-<div id="m-dep" class="modal-overlay" style="display:none;" onclick="if(event.target===this)this.style.display='none'">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title">Nouvelle dépense</div>
-      <button class="btn btn-ghost" style="padding:4px 8px;" onclick="document.getElementById('m-dep').style.display='none'">✕</button>
-    </div>
-    <div class="modal-body">
-      <div><label class="form-label-m">Titre <span style="color:var(--gold);">*</span></label><input class="form-input-m" type="text" placeholder="Ex: Courses Carrefour"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div><label class="form-label-m">Montant (€) <span style="color:var(--gold);">*</span></label><input class="form-input-m" type="number" placeholder="0.00"></div>
-        <div><label class="form-label-m">Date <span style="color:var(--gold);">*</span></label><input class="form-input-m" type="date"></div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div><label class="form-label-m">Catégorie</label>
-          <select class="form-input-m"><option>Alimentation</option><option>Loyer</option><option>Énergie</option><option>Loisirs</option><option>Transport</option><option>Autre</option></select>
-        </div>
-        <div><label class="form-label-m">Payeur</label>
-          <select class="form-input-m"><option>Jean Dupont (moi)</option><option>Marie Lefèvre</option><option>Alex Robin</option><option>Tom Renard</option></select>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-outline" onclick="document.getElementById('m-dep').style.display='none'">Annuler</button>
-      <button class="btn btn-gold">Ajouter</button>
-    </div>
-  </div>
-</div>
-
 <!-- MODAL Invitation -->
 <div id="m-invite" class="modal-overlay" style="display:none;" onclick="if(event.target===this)this.style.display='none'">
   <div class="modal">
@@ -718,12 +689,10 @@
       <button class="btn btn-ghost" style="padding:4px 8px;" onclick="document.getElementById('m-invite').style.display='none'">✕</button>
     </div>
     <div class="modal-body">
-      <div><label class="form-label-m">Adresse email</label><input class="form-input-m" type="email" placeholder="exemple@email.com"></div>
-      <div style="background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:8px;padding:13px;">
-        <div style="font-size:0.66rem;color:var(--gold);margin-bottom:5px;font-weight:600;">Lien d'invitation</div>
-        <div style="font-size:0.64rem;color:var(--muted);word-break:break-all;line-height:1.5;">https://coloc.app/invite/eyJhbGciOiJIUzI1...</div>
-        <button class="btn btn-outline" style="margin-top:9px;font-size:0.62rem;padding:4px 10px;">Copier</button>
+      <div><label class="form-label-m">Adresse email</label>
+        <input class="form-input-m" type="email" placeholder="exemple@email.com">
       </div>
+    
     </div>
     <div class="modal-footer">
       <button class="btn btn-outline" onclick="document.getElementById('m-invite').style.display='none'">Annuler</button>

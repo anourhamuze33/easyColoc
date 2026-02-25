@@ -55,7 +55,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(
             Colocation::class,
-            'memberships',
+            'members',
             'user_id',
             'colocation_id'
         );

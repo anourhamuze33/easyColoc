@@ -758,7 +758,7 @@
     </div>
 
     <div class="content">
-      <form action="{{route('colocation.store')}}" method="POST" class="content-inner">
+      <form action="{{route('exponse.store')}}" method="POST" class="content-inner">
         @csrf
         <div class="form-card">
 
@@ -805,10 +805,10 @@
             <!-- Section 2: Catégorie -->
             <div class="section-gap">
               <div class="section-title">Catégorie <span style="color:var(--gold);">*</span></div>
-                <input type="hidden" name="category" id="categoryInput" value="Alimentation">
+                <input type="hidden" name="category_id" id="categoryInput" value="">
               <div class="category-grid">
-                <div class="cat- sepilllected" onclick="selectCat(this)">Alimentation</div>
-                <div class="cat-pill" onclick="selectCat(this)">Loyer</div>
+                <div class="cat-pill" onclick="selectCat(this)" data-valeur=1>Alimentation</div>
+                <div class="cat-pill" onclick="selectCat(this)" data-valeur=2>Loyer</div>
                 <div class="cat-pill" onclick="selectCat(this)">Énergie</div>
                 <div class="cat-pill" onclick="selectCat(this)">Loisirs</div>
                 <div class="cat-pill" onclick="selectCat(this)">Transport</div>
@@ -818,10 +818,12 @@
               </div>
             </div>
 
+              <input type="hidden" name="amount_for_one" id="amount_for_oneInput" value=0>
             <!-- Preview -->
             <div class="amount-preview">
-              <div class="preview-title">Aperçu de la répartition — montant saisi : <span
-                  style="color:var(--gold);">120,00€</span></div>
+              <div class="preview-title">Aperçu de la répartition — montant saisi : 
+                <span id="preview-prix"style="color:var(--gold);">0</span>
+                <span  style="color:var(--white);">€</span></div>
               <div class="preview-row">
                 <div class="preview-name">
                   <div class="preview-mini-av pa-gold"
@@ -877,9 +879,10 @@
  <script>
 
   function settleRemboursement(el) {
-
+    
     let elValue = parseFloat(el.value);
     if (isNaN(elValue) || elValue < 0) return;
+    document.getElementById('preview-prix').innerText = elValue;
     const Amounts = document.querySelectorAll('.preview-amount');
     let nbrChaqueOne = (elValue / 3).toFixed(2);
     Amounts[0].innerText = '+' + elValue.toFixed(2) + '€';
@@ -887,12 +890,16 @@
       if (index === 0) return;
       amount.innerText = '-' + nbrChaqueOne + '€';
     });
+    document.getElementById('amount_for_oneInput').value = nbrChaqueOne;
   }
 
   function selectCat(el) {
     document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('selected'));
     el.classList.add('selected');
-    const categoryInput = document.getElementById('categoryInput').value = el.innerText.trim();
+    let value = el.dataset.valeur
+    console.log(value);
+    
+    const categoryInput = document.getElementById('categoryInput').value = value;
     console.log(categoryInput);
   }
 
