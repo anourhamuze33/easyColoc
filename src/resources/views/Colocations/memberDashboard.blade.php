@@ -1103,7 +1103,23 @@
 
   <!-- ══════════════ MAIN ══════════════ -->
   <main class="main">
-
+    @if ($errors->any())
+    <div style="
+    margin: 10px 14px;
+    background: rgba(224, 82, 82, 0.06);
+    border: 1px solid rgba(224, 82, 82, 0.2);
+    border-left: 2px solid #e05252;
+    border-radius: 8px;
+    padding: 10px 13px;
+">
+      @foreach ($errors->all() as $error)
+      <div
+        style="display:flex; align-items:center; gap:8px; font-size:0.72rem; color:#e05252; padding: 2px 0; font-family: system-ui, sans-serif;">
+        <span style="opacity:0.6; font-size:0.7rem;">⚠</span> {{ $error }}
+      </div>
+      @endforeach
+    </div>
+    @endif
     <!-- TOPBAR -->
     <div class="topbar">
       <div class="topbar-left">

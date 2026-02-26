@@ -8,11 +8,6 @@ class Colocation extends Model
 {
     protected $fillable = ['name', 'role', 'Owner_id'];
 
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'id');
-    }
-
     public function members()
     {
         return $this->belongsToMany(

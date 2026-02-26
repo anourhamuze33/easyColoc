@@ -44,10 +44,9 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('index');
+            return redirect()->route('colocation.premier');
         }
-        return redirect()->route('colocation.premier');
-        //////////////////redirect
+        return back();
     }
 
     public function logout(Request $request)
@@ -55,6 +54,6 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return back();
+        return redirect()->route('index');
     }
 }

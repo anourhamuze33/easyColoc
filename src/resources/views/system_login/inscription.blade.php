@@ -532,7 +532,7 @@
     <div class="form-box">
 
       <div class="form-box-title">Créer un compte</div>
-      <div class="form-box-sub">Déjà inscrit ? <a href="#">Connectez-vous ici</a></div>
+      <div class="form-box-sub">Déjà inscrit ? <a href="{{route('user.viewLogin')}}">Connectez-vous ici</a></div>
 
       <form action="{{route('user.inscription')}}" method="POST">
         @csrf
@@ -602,7 +602,7 @@
       </form>
 
       <div class="login-link">
-        Vous avez déjà un compte ? <a href="#">Se connecter</a>
+        Vous avez déjà un compte ? <a href="{{route('user.viewLogin')}}">Se connecter</a>
       </div>
 
     </div>

@@ -46,11 +46,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function ownedColocations()
-    {
-        return $this->hasMany(Colocation::class, 'Owner_id');
-    }
-
     public function colocations()
     {
         return $this->belongsToMany(

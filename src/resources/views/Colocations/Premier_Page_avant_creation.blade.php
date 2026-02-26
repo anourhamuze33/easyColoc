@@ -598,6 +598,22 @@
 </head>
 
 <body>
+    @if ($errors->any())
+    <div id="error-alert" style="
+    margin: 14px 14px 0;
+    background: rgba(224, 82, 82, 0.08);
+    border: 1px solid rgba(224, 82, 82, 0.25);
+    border-left: 3px solid #e05252;
+    border-radius: 8px;
+    padding: 10px 14px;
+">
+        @foreach ($errors->all() as $error)
+        <div style="display:flex; align-items:center; gap:8px; font-size:0.75rem; color:#e05252; padding: 2px 0;">
+            <span style="opacity:0.7;">⚠</span> {{ $error }}
+        </div>
+        @endforeach
+    </div>
+    @endif
 
     <!-- TOPBAR -->
     <div class="topbar">
@@ -630,9 +646,9 @@
             </p>
             <div class="hero-actions">
                 <a href="{{route('colocation.create')}}">
-                <button class="btn btn-gold btn-lg">
-                    Créer une colocation
-                </button>
+                    <button class="btn btn-gold btn-lg">
+                        Créer une colocation
+                    </button>
                 </a>
             </div>
         </div>
@@ -648,7 +664,8 @@
                 <form action="{{route('joinbycode')}}" method="POST" class="invite-input-row">
                     @csrf
                     <input class="invite-input" name="token" type="number" placeholder="000000">
-                    <button type="submit" class="btn btn-gold" style="padding:8px 16px;font-size:0.78rem;">Rejoindre</button>
+                    <button type="submit" class="btn btn-gold"
+                        style="padding:8px 16px;font-size:0.78rem;">Rejoindre</button>
                 </form>
             </div>
         </div>

@@ -12,18 +12,23 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::middleware('Authentification')->group(function(){
+Route::middleware('Authentification')->group(function () {
     Route::get('/colocation/Premier', [ColocationController::class, 'premier'])->name('colocation.premier');
-    Route::get('/colocation/form', [ColocationController::class, 'create'])->name('colocation.create');
-    Route::post('/colocation/create', [ColocationController::class, 'store'])->name('colocation.store');
-    Route::get('/colocation', [ColocationController::class, 'index'])->name('colocation.index');
-    
-    Route::post('/invite', [InvitationController::class, 'sendInvitation'])->name('colocation.invite');
-    Route::post('/joinbycode', [InvitationController::class, 'joinByCode'])->name('joinbycode');
-    
-    Route::get('/exponse/create', [ExponsesController::class, 'create'])->name('exponse.create');
-    Route::post('/exponse/store', [ExponsesController::class, 'store'])->name('exponse.store');
-    
+
+    Route::middleware('activeColocation')->group(function () {
+        Route::get('/colocation/form', [ColocationController::class, 'create'])->name('colocation.create');
+        Route::post('/colocation/create', [ColocationController::class, 'store'])->name('colocation.store');
+    });
+    Route::middleware('notActiveColocation')->group(function () {
+        Route::get('/colocation', [ColocationController::class, 'index'])->name('colocation.index');
+
+        Route::post('/invite', [InvitationController::class, 'sendInvitation'])->name('colocation.invite');
+        Route::post('/joinbycode', [InvitationController::class, 'joinByCode'])->name('joinbycode');
+
+        Route::get('/exponse/create', [ExponsesController::class, 'create'])->name('exponse.create');
+        Route::post('/exponse/store', [ExponsesController::class, 'store'])->name('exponse.store');
+    });
+
     Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 });
 
@@ -32,4 +37,3 @@ Route::post('/inscription', [UserController::class, 'inscription'])->name('user.
 
 Route::get('/login/form', [UserController::class, 'viewLogin'])->name('user.viewLogin');
 Route::post('/login', [UserController::class, 'login'])->name('user.login');
-

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Colocation;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ColocationController extends Controller
@@ -27,11 +29,17 @@ class ColocationController extends Controller
         $vaidated = $request->validate([
             'name'=>'required|string|max:60'
         ]);
-        Colocation::create([
+        $user = User::find(Auth::id());
+        $colocation = Colocation::create([
             'name'=>$vaidated['name'],
             'role'=>'active',
             'Owner_id'=> Auth::id()
-        ]);
+            ]);
+        $memberData = [
+            'role'=>'owner',
+        ];
+        $colocation->members()->attach($user->id, $memberData);
+        return redirect()->route('colocation.index');
     }
     public function cancel(Colocation $colocation)
     {
