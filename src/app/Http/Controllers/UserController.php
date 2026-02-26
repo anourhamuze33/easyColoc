@@ -26,7 +26,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
         Auth::login($user);
-        return redirect()->route('hi');
+        return redirect()->route('index');
     }
 
     public function viewLogin()
@@ -44,9 +44,10 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('hi');
+            return redirect()->route('index');
         }
-        return back();
+        return redirect()->route('colocation.premier');
+        //////////////////redirect
     }
 
     public function logout(Request $request)
@@ -54,5 +55,6 @@ class UserController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        return back();
     }
 }

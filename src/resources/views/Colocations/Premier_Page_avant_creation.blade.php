@@ -638,17 +638,18 @@
         </div>
 
         <!-- OR + INVITE TOKEN -->
-        <div class="or-divider" style="max-width:480px;">Vous avez un lien d'invitation ?</div>
+        <div class="or-divider" style="max-width:480px;">Vous avez un code d'invitation ?</div>
 
         <div class="invite-card">
             <div class="invite-icon">✦</div>
             <div class="invite-text">
                 <div class="invite-title">Entrer un code d'invitation</div>
                 <div class="invite-sub">Collez le lien ou le token reçu par email pour rejoindre une colocation.</div>
-                <div class="invite-input-row">
-                    <input class="invite-input" type="text" placeholder="https://coloc.app/invite/...  ou  token">
-                    <button class="btn btn-gold" style="padding:8px 16px;font-size:0.78rem;">Rejoindre</button>
-                </div>
+                <form action="{{route('joinbycode')}}" method="POST" class="invite-input-row">
+                    @csrf
+                    <input class="invite-input" name="token" type="number" placeholder="000000">
+                    <button type="submit" class="btn btn-gold" style="padding:8px 16px;font-size:0.78rem;">Rejoindre</button>
+                </form>
             </div>
         </div>
 
