@@ -21,13 +21,15 @@ Route::middleware('Authentification')->group(function () {
     });
     Route::middleware('notActiveColocation')->group(function () {
         Route::get('/colocation', [ColocationController::class, 'index'])->name('colocation.index');
-
+        
         Route::post('/invite', [InvitationController::class, 'sendInvitation'])->name('colocation.invite');
-        Route::post('/joinbycode', [InvitationController::class, 'joinByCode'])->name('joinbycode');
-
+        
+        Route::get('/exponse', [ExponsesController::class, 'index'])->name('exponse.index');
         Route::get('/exponse/create', [ExponsesController::class, 'create'])->name('exponse.create');
         Route::post('/exponse/store', [ExponsesController::class, 'store'])->name('exponse.store');
-    });
+        });
+
+    Route::post('/joinbycode', [InvitationController::class, 'joinByCode'])->name('joinbycode');
 
     Route::post('/logout', [UserController::class, 'logout'])->name('user.logout');
 });

@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exponse extends Model
 {
-    protected $fillable = ['colocation_id','payer_id','category_id','title','amount','date','amount_for_one'];
+    protected $fillable = ['colocation_id', 'payer_id', 'category_id', 'title', 'amount', 'date', 'amount_for_one'];
     public function colocation()
     {
         return $this->belongsTo(Colocation::class);
     }
-    
+
     public function payer()
     {
         return $this->belongsTo(User::class);
@@ -20,5 +20,9 @@ class Exponse extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function settelments()
+    {
+        return $this->hasMany(Settelment::class, 'exponse_id');
     }
 }

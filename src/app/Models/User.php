@@ -63,12 +63,12 @@ class User extends Authenticatable
 
     public function sendPayment()
     {
-        return $this->hasMany(Settelment::class, 'from_user_id');
+        return $this->hasMany(Settelment::class, 'to_user_id');
     }
 
     public function receivedPayments()
     {
-        return $this->hasMany(Settelment::class, 'to_user_id');
+        return $this->hasMany(Settelment::class, 'from_user_id');
     }
 
     public function invitations()

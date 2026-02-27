@@ -19,26 +19,26 @@ class InvitationController extends Controller
             'email' => 'required|email'
             ]);
             $user = User::find(Auth::id());
-        $colocation = $user->colocations()->first();
-
-        $token = rand(100000, 999999);
-        $invitation = Invitation::updateOrCreate([
-            'colocation_id' => $colocation->id,
-            'email' => $request->email,
-            'token' => $token,
-            'status' => 'pending',
-            'expires_at' => '2026-02-25 15:16:26'
-        ]);
-
-        return back();
-
-        try {
-
-            Mail::to($request->email)->send(new InvitationMail($invitation));
-        } catch (\Exception  $e) {
-            info('Eroor: ' . $e->getMessage());
-            dd($e);
-        }
+            $colocation = $user->colocations()->first();
+            
+            $token = rand(100000, 999999);
+            $invitation = Invitation::updateOrCreate([
+                'colocation_id' => $colocation->id,
+                'email' => $request->email,
+                'token' => $token,
+                'status' => 'pending',
+                'expires_at' => '2026-02-25 15:16:26'
+                ]);
+                
+                
+                try {
+                    
+                    Mail::to($request->email)->send(new InvitationMail($invitation));
+                    } catch (\Exception  $e) {
+                        info('Eroor: ' . $e->getMessage());
+                        dd($e);
+                        }
+                        return back();
     }
     public function joinByCode(Request $request)
     {
@@ -54,6 +54,6 @@ class InvitationController extends Controller
             'status' => 'accepted'
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('colocation.index');
     }
 }

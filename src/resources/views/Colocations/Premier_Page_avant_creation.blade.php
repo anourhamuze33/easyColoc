@@ -652,6 +652,13 @@
                 </a>
             </div>
         </div>
+        <div class="hero-actions">
+            <a href="{{route('colocation.index')}}">
+                <button class="btn btn-gold btn-lg">
+                    vous avez une colocation
+                </button>
+            </a>
+        </div>
 
         <!-- OR + INVITE TOKEN -->
         <div class="or-divider" style="max-width:480px;">Vous avez un code d'invitation ?</div>

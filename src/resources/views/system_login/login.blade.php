@@ -228,7 +228,7 @@
     <!-- LEFT PANEL -->
     <div class="left-panel">
       <div class="panel-greeting">Bon retour parmi nous</div>
-      <h2 class="panel-title">Reconnectez-vous à <span>colocn</span></h2>
+      <h2 class="panel-title">Reconnectez-vous à <span>coloc</span></h2>
       <p class="panel-sub">Accédez à vos dépenses, vos soldes et vos remboursements en un instant.</p>
 
       <div class="info-cards">

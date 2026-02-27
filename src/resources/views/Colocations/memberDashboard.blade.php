@@ -1043,7 +1043,7 @@
 
   <!-- ══════════════ SIDEBAR ══════════════ -->
   <aside class="sidebar">
-    <a class="logo" href="#">
+    <a class="logo" href="{{route('index')}}">
       <div class="logo-icon">C</div>
       CoLoc
     </a>
@@ -1060,10 +1060,10 @@
     <nav>
       <div class="nav-section">
         <div class="nav-label">Principal</div>
-        <a class="nav-item active" href="#"><span class="ni">⬡</span> Dashboard</a>
-        <a class="nav-item" href="#"><span class="ni">⌂</span> Ma Colocation <span
+        <a class="nav-item active" href="{{route('colocation.index')}}"><span class="ni">⬡</span> Dashboard</a>
+        <a class="nav-item" href="{{route('colocation.index')}}"><span class="ni">⌂</span> Ma Colocation <span
             class="nav-badge nb-gold">Active</span></a>
-        <a class="nav-item" href="#"><span class="ni">◈</span> Dépenses</a>
+        <a class="nav-item" href="{{route('exponse.index')}}"><span class="ni">◈</span> Expenses</a>
         <a class="nav-item" href="#"><span class="ni">⇋</span> Balances <span class="nav-badge nb-red">3</span></a>
         <a class="nav-item" href="#"><span class="ni">◎</span> Membres</a>
       </div>
@@ -1155,10 +1155,12 @@
 
       <!-- QUICK ACTIONS -->
       <div class="quick-actions">
+        <a href="{{route('exponse.create')}}" style="text-decoration: none">
         <div class="qa-card">
-          <div class="qa-icon">💸</div>
-          <div class="qa-label">Ajouter une dépense</div>
+          <div class="qa-icon" style="color: white">E</div>
+          <div class="qa-label">Ajouter une éxpense</div>
         </div>
+        </a>
         <div class="qa-card">
           <div class="qa-icon">✓</div>
           <div class="qa-label">Marquer payé</div>
@@ -1345,56 +1347,6 @@
           </div>
         </div>
       </div>
-
-
-      <!-- Activité récente -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title">Activité récente</div>
-          <button class="btn btn-ghost" style="font-size:0.7rem;padding:4px 8px;">Voir tout →</button>
-        </div>
-        <div class="card-body">
-          <div class="activity-row">
-            <div class="act-icon act-gold">💸</div>
-            <div class="act-text">
-              <strong>Jean</strong> a ajouté une dépense <strong>Courses Carrefour</strong>
-              <div class="act-time">Il y a 2 heures</div>
-            </div>
-            <div class="act-amount pos">+120€</div>
-          </div>
-          <div class="activity-row">
-            <div class="act-icon act-green">✓</div>
-            <div class="act-text">
-              <strong>Marie</strong> a marqué un paiement comme effectué
-              <div class="act-time">Il y a 5 heures</div>
-            </div>
-            <div class="act-amount pos">+30€</div>
-          </div>
-          <div class="activity-row">
-            <div class="act-icon act-gold">💸</div>
-            <div class="act-text">
-              <strong>Marie</strong> a ajouté une dépense <strong>EDF Électricité</strong>
-              <div class="act-time">Hier, 18h14</div>
-            </div>
-            <div class="act-amount" style="color:var(--text);font-weight:700;">+89€</div>
-          </div>
-          <div class="activity-row">
-            <div class="act-icon act-gold">✦</div>
-            <div class="act-text">
-              <strong>Jean</strong> a invité <strong>tom.renard@email.com</strong>
-              <div class="act-time">Il y a 3 jours</div>
-            </div>
-          </div>
-          <div class="activity-row">
-            <div class="act-icon act-green">◎</div>
-            <div class="act-text">
-              <strong>Tom Renard</strong> a rejoint la colocation
-              <div class="act-time">Il y a 3 jours</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="card a4">
         <div class="card-header">
           <div class="card-title">Membres de la colocation</div>
